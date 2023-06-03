@@ -76,3 +76,37 @@ console.log(
 // Question 4.
 // Watch the videos on the slide.
 
+
+// Question 5. Find all the posts by a single user
+// Call this API "https://jsonplaceholder.typicode.com/posts"
+// and return all the posts by any given user id.
+
+
+async function postsByUser(userId) {
+    const promise = await fetch("https://jsonplaceholder.typicode.com/posts");
+    
+    const result = await promise.json()
+
+    const posts = result.filter(element => element.userId === userId)
+
+    console.log(posts)
+}
+
+postsByUser(4);
+
+
+// Question 6. First 6 Incomplete Todos
+// Call this API "https://jsonplaceholder.typicode.com/todos" 
+// and return the first 6 incomplete todo's from the result.
+
+async function firstSixIncomplete(userId) {
+    const promise = await fetch("https://jsonplaceholder.typicode.com/todos");
+
+    const result = await promise.json()
+
+    const incompleteTasks = result.filter(element => !element.completed).slice(0,6);
+
+    console.log(incompleteTasks)
+}
+
+firstSixIncomplete(6);
